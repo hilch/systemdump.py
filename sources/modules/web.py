@@ -1,3 +1,9 @@
+## systemdump.py
+## create and load a system dump for B&R PLC from the command line
+##
+## https://github.com/hilch/systemdump.py
+##
+
 # pip install requests
 
 import sys
