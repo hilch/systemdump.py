@@ -13,11 +13,19 @@ I regularly had to create lots of system dumps from multiple machines and was ti
 So I wrote this Python script to automate this work with e.g. a batchfile.
 
 
+# Installation
+install Python from web page [https://www.python.org/](https://www.python.org/). I used the 3.9.6.
+
+```
+py -m pip install systemdumpy
+```
+
+
 # Examples
 
 ## create a dump and store it
 ```
-python Systemdump.py 192.168.0.100 -cuv -p MyCPU_
+py -m systemdumpy 192.168.0.100 -cuv -p MyCPU_
 
 create a systemdump on 192.168.0.100
 upload systemdump from 192.168.0.100
@@ -26,35 +34,19 @@ saving MyCPU_BuR_SDM_Sysdump_2021-07-09_11-51-55.tar.gz (2820986) bytes
 
 ## delete the last systemdump from PLC
 ```
-python Systemdump.py 192.168.0.100 -dv
+py -m systemdumpy 192.168.0.100 -dv
 ```
 
 ## create a inventory list (*xlsx) from file
 ```
-python Systemdump.py BuR_SDM_Sysdump_2021-07-09_17-43-05.tar.gz -iv
+py -m systemdumpy BuR_SDM_Sysdump_2021-07-09_17-43-05.tar.gz -iv
 ```
-
-
-# Installation
-install Python from web page [https://www.python.org/](https://www.python.org/). I used the 3.9.6.
-
-install Python request library
-```
-python -m pip install requests
-```
-
-install Python openpyxl library
-```
-python -m pip install openpyxl
-```
-
-For those of you who (for whatever reason) don't want to install Python for this, I also put an executable in the [releases](https://github.com/hilch/systemdump.py/releases) that was created with [pyinstaller](https://www.pyinstaller.org).
 
 
 # usage
 
 ```
-usage: systemdump.py [-h] [-c] [-n] [-u] [-d] [-p PREFIX] [-i] [-v] [--version] target
+usage: systemdumpy [-h] [-c] [-n] [-u] [-d] [-p PREFIX] [-i] [-v] [--version] target
 
 positional arguments:
   target                remote PLC IP address or name or systemdump file (*.targ.gz)

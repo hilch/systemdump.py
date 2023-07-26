@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "systemdumpy"
+version = "1.0.2"
+authors = [
+  { name="Christoph Hilchenbach" },
+]
+description = "create and load a system dump for B&R PLC from the command line"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+	"openpyxl >=3.1.2",
+	"requests >=2.31.0"
+]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["systemdumpy"]
+require-runtime-dependencies = true
+
+
+
+[project.urls]
+"Homepage" = "https://github.com/hilch/systemdump.py"
+"Bug Tracker" = "https://github.com/hilch/systemdump.py/issues"
