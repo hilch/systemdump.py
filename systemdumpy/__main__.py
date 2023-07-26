@@ -10,6 +10,7 @@ import os
 import re
 from systemdumpy.modules import web
 from systemdumpy.modules import report
+from systemdumpy.__about__ import __version__
 
 
 ERROR_OK = 0
@@ -32,7 +33,7 @@ def parseCommandLine():
     parser.add_argument("-p", "--prefix", help="prepend this PREFIX for system dump filename after upload", default = "" )
     parser.add_argument("-i", "--inventory", help="create a hardware inventory list (*.xlsx)", action="store_true")
     parser.add_argument("-v", "--verbose", help="show messages", action="store_true")
-    parser.add_argument('--version', action='version', version='%(prog)s 1.0.2   (https://github.com/hilch/systemdump.py)')
+    parser.add_argument('--version', action='version', version= f'%(prog)s {__version__}   (https://github.com/hilch/systemdump.py)')
 
     try:
         args = parser.parse_args()
@@ -103,19 +104,7 @@ def executeCommands(args):
                 ret = report.report(args.target, ('inventory'))
                 if ret['result'] != 'Ok':
                     return ERROR_CREATING_REPORT
-
-        if args.loggers:
-            if target_is_remote: # target is remote
-                if dumpfilename != "":
-                    if args.verbose:
-                            print(f"extract loggers from uploaded file: {dumpfilename}")                      
-       
-            else: # target is a file
-                if args.verbose:
-                    print(f"extract loggers from: {args.target}")               
-
-                if ret['result'] != 'Ok':
-                    return ERROR_EXTRACTING_LOGS                    
+                           
 
         if args.delete:
             if target_is_remote: # target is remote
