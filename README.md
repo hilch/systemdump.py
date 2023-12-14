@@ -3,13 +3,27 @@
 [![Made For B&R](https://github.com/hilch/BandR-badges/blob/main/Made-For-BrAutomation.svg)](https://www.br-automation.com)
 
 # systemdump.py
-create and load a system dump for B&amp;R PLC from the command line
+create and load a system dump for B&amp;R PLC from the command line.
 
-[read what a systemdump is good for](https://www.br-automation.com/en/about-us/press-room/advanced-system-diagnostics-via-the-web-16-02-2011/)
+The system dump collects diagnostics data about the PLC as an XML file. This XML file contains information about the running PLC project, eg.
+- [general target status](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_system_general.htm)
+- [which software modules and their versions](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_software.htm)
+- [system timing](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_system_timing.htm)
+- [hardware modules](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_hardware.htm), their configuration, serial number, firmware version
+- [IO status](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_hardwareioviewer.html) at the time stamp of dumping
+- [memory status](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_system_memory.htm)
+
+and much more.
+
+Furthermore a system dump can contain [logger, profiler, network command trace and some application information.
+
+A system dump file can be created by function block [SdmSystemDump()](https://help.br-automation.com/#/en/4/libraries%2Fasarsdm%2Ffbks%2Fsdmsystemdump.html) or by the [System Diagnostics Manager](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm.htm)
+
+The contents of a system dump file can be viewed by Automation Studio or by [SystemDumpViewer](https://github.com/bee-eater/SystemDumpViewer).
 
 # Intention
 
-I regularly had to create lots of system dumps from multiple machines and was tired of always using the websites to do it.
+I regularly had to create lots of system dumps from multiple machines and was tired of always using the [SDM webpage](https://help.br-automation.com/#/en/4/automationruntime/targets/sdm/sdm/sdm2_sdmpage_systemdump.html) to do it.
 So I wrote this Python script to automate this work with e.g. a batchfile.
 
 
