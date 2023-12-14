@@ -37,7 +37,7 @@ saving MyCPU_BuR_SDM_Sysdump_2021-07-09_11-51-55.tar.gz (2820986) bytes
 py -m systemdumpy 192.168.0.100 -dv
 ```
 
-## create a inventory list (*xlsx) from file
+## create an inventory list (*xlsx) from file
 ```
 py -m systemdumpy BuR_SDM_Sysdump_2021-07-09_17-43-05.tar.gz -iv
 ```
