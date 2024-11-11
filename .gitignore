@@ -131,3 +131,6 @@ dmypy.json
 
 # system dump files
 *.gz
+
+# excel files
+*.xlsx
