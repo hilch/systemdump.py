@@ -1,11 +1,13 @@
+# systemdump.py
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Made For B&R](https://github.com/hilch/BandR-badges/blob/main/Made-For-BrAutomation.svg)](https://www.br-automation.com)
 
-# systemdump.py
 create and load a system dump for B&amp;R PLC from the command line.
 
 The system dump collects diagnostics data about the PLC as an XML file. This XML file contains information about the running PLC project, eg.
+
 - [general target status](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_system_general.htm)
 - [which software modules and their versions](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_software.htm)
 - [system timing](https://help.br-automation.com/#/en/4/automationruntime%2Ftargets%2Fsdm%2Fsdm%2Fsdm2_system_timing.htm)
@@ -21,46 +23,47 @@ A system dump file can be created by function block [SdmSystemDump()](https://he
 
 The contents of a system dump file can be viewed by Automation Studio or by [SystemDumpViewer](https://github.com/bee-eater/SystemDumpViewer).
 
-# Intention
+## Intention
 
 I regularly had to create lots of system dumps from multiple machines and was tired of always using the [SDM webpage](https://help.br-automation.com/#/en/4/automationruntime/targets/sdm/sdm/sdm2_sdmpage_systemdump.html) to do it.
 So I wrote this Python script to automate this work with e.g. a batchfile.
 
+## Installation
 
-# Installation
 install Python from web page [https://www.python.org/](https://www.python.org/). I used the 3.9.6.
 
-```
+```bash
 py -m pip install systemdumpy
 ```
 
+## Examples
 
-# Examples
+### create a dump and store it
 
-## create a dump and store it
-```
-py -m systemdumpy 192.168.0.100 -cuv -p MyCPU_
+```bash
+systemdump 192.168.0.100 -cuv -p MyCPU_
 
 create a systemdump on 192.168.0.100
 upload systemdump from 192.168.0.100
 saving MyCPU_BuR_SDM_Sysdump_2021-07-09_11-51-55.tar.gz (2820986) bytes
 ```
 
-## delete the last systemdump from PLC
-```
-py -m systemdumpy 192.168.0.100 -dv
+### delete the last systemdump from PLC
+
+```bash
+systemdump 192.168.0.100 -dv
 ```
 
-## create an inventory list (*xlsx) from file
-```
-py -m systemdumpy BuR_SDM_Sysdump_2021-07-09_17-43-05.tar.gz -iv
+### create an inventory list (*xlsx) from file
+
+```bash
+systemdump BuR_SDM_Sysdump_2021-07-09_17-43-05.tar.gz -iv
 ```
 
+## usage
 
-# usage
-
-```
-usage: systemdumpy [-h] [-c] [-n] [-u] [-d] [-p PREFIX] [-i] [-v] [--version] target
+```bash
+usage: systemdump [-h] [-c] [-n] [-u] [-d] [-p PREFIX] [-i] [-v] [--version] target
 
 positional arguments:
   target                remote PLC IP address or name or systemdump file (*.targ.gz)
@@ -77,4 +80,3 @@ optional arguments:
   -v, --verbose         show messages
   --version             show program's version number and exit
 ```
-

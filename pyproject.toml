@@ -28,7 +28,8 @@ path = "systemdumpy/__about__.py"
 only-include = ["systemdumpy"]
 require-runtime-dependencies = true
 
-
+[project.scripts]
+systemdump = "systemdumpy.__main__:main_cli"
 
 [project.urls]
 "Homepage" = "https://github.com/hilch/systemdump.py"
